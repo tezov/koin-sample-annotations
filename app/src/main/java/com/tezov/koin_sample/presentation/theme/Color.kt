@@ -1,4 +1,4 @@
-package com.tezov.koin_sample.ui.theme
+package com.tezov.koin_sample.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
