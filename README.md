@@ -1,5 +1,7 @@
 # Koin Sample App
 
+Check the medium story: https://medium.com/itnext/mastering-koin-scopes-beyond-singletons-and-factories-dae8b58ef54f
+
 This Android sample application demonstrates how to use:
 - Clean Architecture
 - Jetpack Compose
