@@ -120,21 +120,3 @@ The ViewModel closes the scope:
 The UI returns to the "Connect" screen.
 
 ---
-
-## Running the Project
-
-``./gradlew installDebug``
-
----
-
-## Summary
-
-This sample demonstrates:
-- Clean architecture layering
-- Compose + Navigation setup
-- Koin dependency injection
-- ViewModels powered by Koin
-- Scoped DI for user session handling
-- Simple, testable data/use-case structure
-
-It serves as a compact reference for integrating Koin scopes into a Compose app.
