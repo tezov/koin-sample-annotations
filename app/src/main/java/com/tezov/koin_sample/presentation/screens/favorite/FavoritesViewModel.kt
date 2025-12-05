@@ -7,12 +7,14 @@ import com.tezov.koin_sample.domain.usecase.GetFavoriteLibrariesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
 data class FavoritesUiState(
     val isLoading: Boolean = true,
     val libraries: List<Library> = emptyList()
 )
 
+@KoinViewModel
 class FavoritesViewModel(
     private val getFavoriteLibrariesUseCase: GetFavoriteLibrariesUseCase
 ) : ViewModel() {

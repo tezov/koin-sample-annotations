@@ -72,7 +72,9 @@ fun ProfileScreen(
             return
         }
 
-        val scopedClass = viewModel.scopedClass()
+        val scopedClass = remember {
+            viewModel.scopedClass()
+        }
 
         ProfileCard(state.name, scopedClass?.value)
         Spacer(Modifier.height(16.dp))

@@ -3,7 +3,9 @@ package com.tezov.koin_sample.data
 import com.tezov.koin_sample.domain.model.Library
 import com.tezov.koin_sample.domain.protocol.LibraryRepositoryProtocol
 import kotlinx.coroutines.delay
+import org.koin.core.annotation.Single
 
+@Single
 class LibraryRepository : LibraryRepositoryProtocol {
 
     private val libraries = listOf(

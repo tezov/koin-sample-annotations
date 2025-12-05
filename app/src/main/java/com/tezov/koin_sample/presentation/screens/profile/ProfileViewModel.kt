@@ -2,6 +2,7 @@ package com.tezov.koin_sample.presentation.screens.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tezov.koin_sample.di.UserSessionScope
 import com.tezov.koin_sample.domain.model.ScopedClass
 import com.tezov.koin_sample.domain.model.UserSession
 import com.tezov.koin_sample.domain.usecase.GetProfileNameUseCase
@@ -9,6 +10,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
 import org.koin.mp.KoinPlatform.getKoin
@@ -20,6 +22,8 @@ data class ProfileUiState(
     val role: String = ""
 )
 
+@KoinViewModel
+@UserSessionScope
 class ProfileViewModel(
     private val getProfileNameUseCase: GetProfileNameUseCase
 ) : ViewModel() {
@@ -67,7 +71,10 @@ class ProfileViewModel(
             _uiState.value = ProfileUiState(isLoading = true)
             delay(500)
             val name = getProfileNameUseCase()
-            val sessionScope = koin.createScope("currentSession", named("userSession")).also {
+            val sessionScope = koin.createScope(
+                scopeId = "currentSession",
+                qualifier = named<UserSessionScope>()
+            ).also {
                 sessionScope = it
             }
             sessionScope.declare<UserSession>(UserSession.NormalUser(name))
@@ -86,7 +93,10 @@ class ProfileViewModel(
             _uiState.value = ProfileUiState(isLoading = true)
             delay(500)
             val name = getProfileNameUseCase()
-            val sessionScope = koin.createScope("currentSession", named("userSession")).also {
+            val sessionScope = koin.createScope(
+                scopeId = "currentSession",
+                qualifier = named<UserSessionScope>()
+            ).also {
                 sessionScope = it
             }
             sessionScope.declare<UserSession>(UserSession.AdminUser(name, 5))
